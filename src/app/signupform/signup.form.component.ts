@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormGroup, FormControl, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors, AsyncValidatorFn, ValidatorFn } from '@angular/forms';
 @Component({
     selector:'sign-up',
     template:`
@@ -56,6 +56,12 @@ export class SignupComponent{
             }
         }
         
+        group(controlsConfig: {[key: string]: any}, extra: {[key: string]: any} = null): FormGroup {
+            const controls = null//this._reduceControls(controlsConfig);
+            const validator: ValidatorFn = null//isPresent(extra) ? extra['validator'] : null;
+            const asyncValidator: AsyncValidatorFn =  null//isPresent(extra) ? extra['asyncValidator'] : null;
+            return new FormGroup(controls, validator, asyncValidator);
+            }
 
 }
 
